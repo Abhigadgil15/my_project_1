@@ -9,10 +9,12 @@ def index(request):
     "Rahul Mandviya",
     "Yash Kulkarni"
     ]
+    show_developer = True
     context = {
         "developer": developed_by,
-        "mentors": mentors
+        "mentors": mentors,
+        "show_developer": show_developer
     }
-    response = render(request, 'index.html', context )
+    response = render(request, 'HelloWorld/index.html', context )
     
     return response

@@ -1,23 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Hello World</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
-</head>
-<body>
-    <h1>Hello World!</h1>
-    <ul>
-        {% for mentor in mentors %}
-        <li> {{mentor}}</li>
-        {% endfor %}
-    </ul>
+{% extends 'HelloWorld/base.html' %}
+
+{% block head %}
+<style>
+    .bold {
+        font-weight:900;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+    {% include 'HelloWorld\navbar.html' %}
+
+    <div class="container">
+        <h1>Hello World!</h1>
+        <ul class ="collection">
+            {% for mentor in mentors %}
+            <li class = "{% cycle 'bold' '' %} collection-item"> {{ mentor }}</li>
+            {% endfor %}
+        </ul>
+        {% if show_developer %}
+            <span>Developed by: {{ developer }}</span>
+        {% endif %}
+    </div>
+
+{% endblock %}
     
 
-    <span>Developed by:{{developer}}</span>
-    
-</body>
-</html>
+
